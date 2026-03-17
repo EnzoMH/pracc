@@ -14,10 +14,6 @@ int valid_order(MarketData* marketdata, Order* order){
     }
 }
 
-
-
-
-
 /*
 #include "account.h"
 #include "order.h"

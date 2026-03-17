@@ -1,7 +1,9 @@
 /*account.c*/
 
+#include <stdlib.h>
 #include "../include/account.h"
 #include "../include/order.h"
+#include <string.h>
 
 int check_balance(Account* account, Order* order) {
     long order_amount = order->price * order->quantity;
@@ -26,4 +28,21 @@ int check_margin(Account* account, Order* order) {
         return 1;
     }
 
+}
+
+Account* create_account(int client_id, char* name, long balance, long margin){ // malloc으로 생성
+    Account* a = malloc(sizeof(Account));
+    if (a == NULL){
+        return NULL;
+    }
+    a->client_id = client_id;
+    a->balance = balance;
+    a->margin = margin;
+    strcpy(a->name, name);  // 문자열은 strcpy
+
+    return a;
+}
+
+void destroy_account(Account* account) {
+    free(account) ;
 }
